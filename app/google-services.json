@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:658899465592:android:c47d6dae987d1d678b848d",
+        "mobilesdk_app_id": "1:658899465592:android:c0e5d20a7d9e84cf8b848d",
         "android_client_info": {
-          "package_name": "ie.tud.finddog"
+          "package_name": "ie.tud"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "658899465592-gai5srk444qt8sqobqdikq0age9f777l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.tud",
+            "certificate_hash": "59b79ec719a46afeab52e26b69faa72387952ffd"
+          }
+        },
         {
           "client_id": "658899465592-4itlloc65cfnbum9m84co0bb621ap7l0.apps.googleusercontent.com",
           "client_type": 3

@@ -21,12 +21,15 @@ class ReportViewModel : ViewModel() {
 
     var liveFirebaseUser = MutableLiveData<FirebaseUser>()
 
+    var readOnly = MutableLiveData(false)
+
     init {
         load()
     }
 
     fun load() {
         try {
+            readOnly.value = false
             //DonationManager.findAll(liveFirebaseUser.value?.email!!, donationsList)
             FirebaseDBManager.findAll(liveFirebaseUser.value?.uid!!,
                 dogsList)
@@ -34,6 +37,17 @@ class ReportViewModel : ViewModel() {
         }
         catch (e: Exception) {
             Timber.i("Report Load Error : $e.message")
+        }
+    }
+
+    fun loadAll() {
+        try {
+            readOnly.value = true
+            FirebaseDBManager.findAll(dogsList)
+            Timber.i("Report LoadAll Success : ${dogsList.value.toString()}")
+        }
+        catch (e: Exception) {
+            Timber.i("Report LoadAll Error : $e.message")
         }
     }
 

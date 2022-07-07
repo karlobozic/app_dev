@@ -12,9 +12,9 @@ import java.lang.Exception
 class DogDetailViewModel : ViewModel() {
     private val dog = MutableLiveData<DogModel>()
 
-    val observableDog: LiveData<DogModel>
+    var observableDog: LiveData<DogModel>
         get() = dog
-//        set(value) {dog.value = value.value}
+        set(value) {dog.value = value.value}
 
     fun getDog(userid:String, id: String) {
         try {

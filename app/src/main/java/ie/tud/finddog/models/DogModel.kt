@@ -8,12 +8,13 @@ import kotlinx.parcelize.Parcelize
 @IgnoreExtraProperties
 @Parcelize
 data class DogModel(
-    var uid: String = "",
+    var uid: String? = "",
     var name: String = "N/A",
-    var area: String = "",
-    var date: String = "",
-    var breed: String = "",
-    var gender: String = "",
+    var area: String = "N/A",
+    var date: String = "N/A",
+    var breed: String = "N/A",
+    var gender: String = "N/A",
+    var profilepic: String = "",
     var email: String? = "joe@bloggs.com")
     : Parcelable
 {
@@ -26,6 +27,7 @@ data class DogModel(
             "date" to date,
             "breed" to breed,
             "gender" to gender,
+            "profilepic" to profilepic,
             "email" to email
         )
     }

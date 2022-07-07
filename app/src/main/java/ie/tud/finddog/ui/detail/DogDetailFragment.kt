@@ -67,7 +67,7 @@ class DogDetailFragment : Fragment() {
 
 
 //        fragBinding. = detailViewModel
-        Timber.i("Retrofit fragBinding.donationvm == $fragBinding.donationvm")
+        Timber.i("Retrofit fragBinding.name == $fragBinding.name")
     }
 
     override fun onResume() {

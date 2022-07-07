@@ -11,8 +11,26 @@ object FirebaseDBManager : DogStore {
 
     var database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
-    override fun findAll(dogList: MutableLiveData<List<DogModel>>) {
-        TODO("Not yet implemented")
+    override fun findAll(dogsList: MutableLiveData<List<DogModel>>) {
+        database.child("dogs")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(error: DatabaseError) {
+                    Timber.i("Firebase Dog error : ${error.message}")
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val localList = ArrayList<DogModel>()
+                    val children = snapshot.children
+                    children.forEach {
+                        val dog = it.getValue(DogModel::class.java)
+                        localList.add(dog!!)
+                    }
+                    database.child("dogs")
+                        .removeEventListener(this)
+
+                    dogsList.value = localList
+                }
+            })
     }
 
     override fun findAll(userid: String, dogsList: MutableLiveData<List<DogModel>>) {
@@ -87,4 +105,6 @@ object FirebaseDBManager : DogStore {
 
         database.updateChildren(childUpdate)
     }
+
+
 }

@@ -3,6 +3,7 @@ package ie.tud.finddog.ui.report
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -92,6 +93,17 @@ class ReportFragment : Fragment(), DogClickListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_report, menu)
+
+        val item = menu.findItem(R.id.toggleDonations) as MenuItem
+        item.setActionView(R.layout.togglebutton_layout)
+        val toggleDonations: SwitchCompat = item.actionView.findViewById(R.id.toggleButton)
+        toggleDonations.isChecked = false
+
+        toggleDonations.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) reportViewModel.loadAll()
+            else reportViewModel.load()
+        }
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -101,7 +113,7 @@ class ReportFragment : Fragment(), DogClickListener {
     }
 
     private fun render(dogsList: ArrayList<DogModel>) {
-        fragBinding.recyclerView.adapter = DogAdapter(dogsList, this)
+        fragBinding.recyclerView.adapter = DogAdapter(dogsList, this, reportViewModel.readOnly.value!!)
         if (dogsList.isEmpty()) {
             fragBinding.recyclerView.visibility = View.GONE
             fragBinding.dogsNotFound.visibility = View.VISIBLE
@@ -113,14 +125,18 @@ class ReportFragment : Fragment(), DogClickListener {
 
     override fun onDogClick(dog: DogModel) {
         val action = ReportFragmentDirections.actionReportFragmentToDogDetailFragment(dog.uid!!)
-        findNavController().navigate(action)
-    }
+
+        if(!reportViewModel.readOnly.value!!)
+            findNavController().navigate(action)    }
 
     private fun setSwipeRefresh() {
         fragBinding.swiperefresh.setOnRefreshListener {
             fragBinding.swiperefresh.isRefreshing = true
             showLoader(loader,"Downloading Dogs")
-            reportViewModel.load()
+            if(reportViewModel.readOnly.value!!)
+                reportViewModel.loadAll()
+            else
+                reportViewModel.load()
         }
     }
 

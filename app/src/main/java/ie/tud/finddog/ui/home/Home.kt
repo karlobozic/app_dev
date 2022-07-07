@@ -14,11 +14,13 @@ import androidx.navigation.ui.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseUser
+import com.squareup.picasso.Picasso
 import ie.tud.finddog.R
 import ie.tud.finddog.databinding.HomeBinding
 import ie.tud.finddog.databinding.NavHeaderBinding
 import ie.tud.finddog.ui.auth.LoggedInViewModel
 import ie.tud.finddog.ui.auth.Login
+import ie.tud.finddog.utils.customTransformation
 
 
 class Home : AppCompatActivity() {
@@ -73,6 +75,15 @@ class Home : AppCompatActivity() {
         var headerView = homeBinding.navView.getHeaderView(0)
         navHeaderBinding = NavHeaderBinding.bind(headerView)
         navHeaderBinding.navHeaderEmail.text = currentUser.email
+
+        if(currentUser.photoUrl != null && currentUser.displayName != null) {
+            navHeaderBinding.navHeaderName.text = currentUser.displayName
+            Picasso.get().load(currentUser.photoUrl)
+                .resize(200, 200)
+                .transform(customTransformation())
+                .centerCrop()
+                .into(navHeaderBinding.navHeaderImage)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
