@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseUser
 import ie.tud.finddog.firebase.FirebaseDBManager
+import ie.tud.finddog.firebase.FirebaseImageManager
 //import ie.tud.finddog.models.DogManager
 import ie.tud.finddog.models.DogModel
 
@@ -18,6 +19,7 @@ class DogViewModel : ViewModel() {
     fun addDog(firebaseUser: MutableLiveData<FirebaseUser>,
                dog: DogModel) {
         status.value = try {
+            dog.profilepic = FirebaseImageManager.imageUri.value.toString()
             //DonationManager.create(donation)
             FirebaseDBManager.create(firebaseUser,dog)
             true
