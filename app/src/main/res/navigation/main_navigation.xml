@@ -50,4 +50,13 @@
             android:name="dogid"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="ie.tud.finddog.map.MapsFragment"
+        android:label="Dog Map"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_dogDetailFragment"
+            app:destination="@id/dogDetailFragment" />
+    </fragment>
 </navigation>

@@ -36,6 +36,7 @@
     <string name="dogsNotFound">No Dogs Yet...\nGo Make a Listing!</string>
     <string name="dogError">Error : Couldn\'t Make a Donation...</string>
 
+    <string name="action_location">Location</string>
 
     <string name="action_about">About Us</string>
     <string name="aboutus_title">Have you lost a dog?</string>
