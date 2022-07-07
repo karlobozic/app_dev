@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "658899465592",
+    "firebase_url": "https://finddog-3ca91-default-rtdb.firebaseio.com",
+    "project_id": "finddog-3ca91",
+    "storage_bucket": "finddog-3ca91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658899465592:android:34dc4546c05412a58b848d",
+        "android_client_info": {
+          "package_name": "ie.tud.finddog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658899465592-4itlloc65cfnbum9m84co0bb621ap7l0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7g0ulcKnF_pF9SH-59E91GO5DMlffxbI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658899465592-4itlloc65cfnbum9m84co0bb621ap7l0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

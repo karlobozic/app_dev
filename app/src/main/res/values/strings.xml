@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">FindDog</string>
+    <string name="paypal">PayPal</string>
+    <string name="direct">Direct</string>
+    <string name="amount">Amount</string>
+    <string name="total">Total so Far</string>
+    <string name="totalSoFar">$ Total</string>
+    <string name="reportTitle">Donations Report</string>
+    <string name="defaultAmount">00</string>
+    <string name="defaultMethod">N/A</string>
+    <string name="enter_amount">Enter Amount</string>
+
+    <string name="total_donated">$%d</string>
+
+    <string name="dogTitle">Find Dog</string>
+    <string name="dogSubtitle">Enter details of the dog</string>
+    <string name="dogButton">Submit</string>
+    <string name="name">Enter Name</string>
+    <string name="area">Enter Area</string>
+    <string name="date">Enter Date Lost</string>
+    <string name="breed">Enter Breed</string>
+    <string name="gender">Enter Gender</string>
+    <string name="email">Enter Contact Email</string>
+
+    <string name="action_dog">Lost Dog</string>
+    <string name="action_report">Report</string>
+
+    <string name="action_share">Share</string>
+    <string name="action_send">Send</string>
+    <string name="group_communicate">Communicate</string>
+
+    <string name="nav_header_title">Find Dog</string>
+    <string name="nav_header_subtitle">karlo@bozic.ie</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="dogsNotFound">No Dogs Yet...\nGo Make a Listing!</string>
+    <string name="dogError">Error : Couldn\'t Make a Donation...</string>
+
+
+    <string name="action_about">About Us</string>
+    <string name="aboutus_title">Have you lost a dog?</string>
+    <string name="aboutus_message">This app helps you find them\n\nBy inputting your dogs details\n\nOther users can help you find them</string>
+
+    <string name="dogDetails">Dog Details</string>
+    <string name="detailName">Name :</string>
+    <string name="detailArea">Area :</string>
+    <string name="detailDate">Date :</string>
+    <string name="detailBreed">Breed :</string>
+    <string name="detailGender">Gender :</string>
+    <string name="detailEmail">Contact Email :</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="breed">
+        <item>Huskey</item>
+        <item>Poodle</item>
+        <item>Beagle</item>
+        <item>Rottweiler</item>
+        <item>Bulldog</item>
+        <item>Golden Retriever</item>
+        <item>German Shepherd</item>
+        <item>Labrador </item>
+    </string-array>
+
+    <!--  TODO: Remove or change this placeholder text  -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="messageLoading">Please Wait while the Donations are Loading...</string>
+
+    <!-- START Firebase Resources-->
+
+    <string name="label_emailpassword">Email/Password Authentication</string>
+    <string name="desc_emailpassword">Use an email and password to authenticate with Firebase.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="send_link">Send Link</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="verify_email">Verify Email</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="loading">Loading…</string>
+    <string name="signed_in">Signed In</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="token_null">Token: null</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="emailpassword_title_text">Please Login Below</string>
+</resources>

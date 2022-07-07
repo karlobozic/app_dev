@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/reportFragment" >
+
+    <fragment
+        android:id="@+id/dogFragment"
+        android:name="ie.tud.finddog.ui.dog.DogFragment"
+        android:label="@string/action_dog"
+        tools:layout="@layout/fragment_dog">
+        <action
+            android:id="@+id/action_dogFragment_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="ie.tud.finddog.ui.report.ReportFragment"
+        android:label="@string/action_report"
+        tools:layout="@layout/fragment_report">
+
+        <action
+            android:id="@+id/action_reportFragment_to_dogFragment"
+            app:destination="@id/dogFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"/>
+        <action
+            android:id="@+id/action_reportFragment_to_dogDetailFragment"
+            app:destination="@id/dogDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ie.tud.finddog.ui.about.AboutFragment"
+        android:label="@string/action_about"
+        tools:layout="@layout/fragment_about"/>
+    <fragment
+        android:id="@+id/dogDetailFragment"
+        android:name="ie.tud.finddog.ui.detail.DogDetailFragment"
+        android:label="Dog Detail"
+        tools:layout="@layout/fragment_dog_detail" >
+        <action
+            android:id="@+id/action_dogDetailFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <argument
+            android:name="dogid"
+            app:argType="long" />
+    </fragment>
+</navigation>
