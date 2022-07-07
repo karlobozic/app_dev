@@ -3,7 +3,9 @@ package ie.tud.finddog.ui.dog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ie.tud.finddog.models.DogManager
+import com.google.firebase.auth.FirebaseUser
+import ie.tud.finddog.firebase.FirebaseDBManager
+//import ie.tud.finddog.models.DogManager
 import ie.tud.finddog.models.DogModel
 
 class DogViewModel : ViewModel() {
@@ -13,9 +15,11 @@ class DogViewModel : ViewModel() {
     val observableStatus: LiveData<Boolean>
         get() = status
 
-    fun addDog(dog: DogModel) {
+    fun addDog(firebaseUser: MutableLiveData<FirebaseUser>,
+               dog: DogModel) {
         status.value = try {
-            DogManager.create(dog)
+            //DonationManager.create(donation)
+            FirebaseDBManager.create(firebaseUser,dog)
             true
         } catch (e: IllegalArgumentException) {
             false

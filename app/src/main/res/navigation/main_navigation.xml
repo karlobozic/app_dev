@@ -48,6 +48,6 @@
             app:destination="@id/reportFragment" />
         <argument
             android:name="dogid"
-            app:argType="long" />
+            app:argType="string" />
     </fragment>
 </navigation>

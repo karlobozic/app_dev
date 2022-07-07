@@ -13,16 +13,19 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ie.tud.finddog.R
 import ie.tud.finddog.databinding.FragmentDogDetailBinding
+import ie.tud.finddog.ui.auth.LoggedInViewModel
 import ie.tud.finddog.ui.report.ReportViewModel
 import timber.log.Timber
 
 class DogDetailFragment : Fragment() {
 
     private lateinit var detailViewModel: DogDetailViewModel
-    private val args by navArgs<DogDetailFragmentArgs>()
+//    private val args by navArgs<DogDetailFragmentArgs>()
     private var _fragBinding: FragmentDogDetailBinding? = null
     private val fragBinding get() = _fragBinding!!
+    private val args by navArgs<DogDetailFragmentArgs>()
     private val reportViewModel : ReportViewModel by activityViewModels()
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -34,12 +37,21 @@ class DogDetailFragment : Fragment() {
         detailViewModel = ViewModelProvider(this).get(DogDetailViewModel::class.java)
         detailViewModel.observableDog.observe(viewLifecycleOwner, Observer { render() })
 
-//        fragBinding.deleteDonationButton.setOnClickListener {
-//            reportViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.email!!,
-//                detailViewModel.observableDog.value?.id!!)
-//            findNavController().navigateUp()
-//        }
+        fragBinding.editDonationButton.setOnClickListener {
+            detailViewModel.updateDog(loggedInViewModel.liveFirebaseUser.value?.uid!!,
+                args.dogid, fragBinding.name?.observableDog!!.value!!)
+            //Force Reload of list to guarantee refresh
+            reportViewModel.load()
+            findNavController().navigateUp()
+            //findNavController().popBackStack()
 
+        }
+
+        fragBinding.deleteDonationButton.setOnClickListener {
+            reportViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.uid!!,
+                detailViewModel.observableDog.value?.uid!!)
+            findNavController().navigateUp()
+        }
         return root
     }
 
@@ -60,8 +72,8 @@ class DogDetailFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        detailViewModel.getDog(args.dogid)
-
+        detailViewModel.getDog(loggedInViewModel.liveFirebaseUser.value?.uid!!,
+            args.dogid)
     }
 
     override fun onDestroyView() {

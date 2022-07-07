@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -12,6 +13,8 @@ import ie.tud.finddog.R
 import ie.tud.finddog.databinding.FragmentDogBinding
 import ie.tud.finddog.main.DogApp
 import ie.tud.finddog.models.DogModel
+import ie.tud.finddog.ui.auth.LoggedInViewModel
+import ie.tud.finddog.ui.report.ReportViewModel
 
 class DogFragment : Fragment() {
 
@@ -20,6 +23,8 @@ class DogFragment : Fragment() {
     private val fragBinding get() = _fragBinding!!
     //lateinit var navController: NavController
     private lateinit var dogViewModel: DogViewModel
+    private val reportViewModel: ReportViewModel by activityViewModels()
+    private val loggedInViewModel : LoggedInViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,12 +73,14 @@ class DogFragment : Fragment() {
             val breed = layout.editTextBreed.text.toString()
             val gender = layout.editTextGender.text.toString()
 
-            dogViewModel.addDog(
-                DogModel( name = name,
+
+            dogViewModel.addDog(loggedInViewModel.liveFirebaseUser,
+                DogModel(name = name,
                     area = area,
                     date = date,
                     breed = breed,
-                    gender = gender))
+                    gender = gender,
+                    email = loggedInViewModel.liveFirebaseUser.value?.email!!))
 
 //            Timber.i("Total Donated so far")
         }
