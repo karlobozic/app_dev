@@ -48,6 +48,10 @@ class DogAdapter constructor(private var dogs: ArrayList<DogModel>,
             binding.root.tag = dog.uid
             binding.name.text = dog.name
             binding.date.text = dog.date
+            binding.breed.text = dog.breed
+            binding.area.text = dog.area
+            binding.email.text = dog.email
+
 
             Picasso.get().load(dog.profilepic.toUri())
                 .resize(200, 200)

@@ -12,8 +12,8 @@
 
     <string name="total_donated">$%d</string>
 
-    <string name="dogTitle">Find Dog</string>
-    <string name="dogSubtitle">Enter details of the dog</string>
+    <string name="dogTitle">Enter details of the dog</string>
+    <string name="dogSubtitle">Please fill out all fields</string>
     <string name="dogButton">Submit</string>
     <string name="name">Enter Name</string>
     <string name="area">Enter Area</string>
@@ -26,7 +26,7 @@
     <string name="action_report">Report</string>
 
     <string name="action_share">Share</string>
-    <string name="action_send">Send</string>
+    <string name="action_send">View Messages</string>
     <string name="group_communicate">Communicate</string>
 
     <string name="nav_header_title">Find Dog</string>
@@ -45,7 +45,7 @@
     <string name="dogDetails">Dog Details</string>
     <string name="detailName">Name :</string>
     <string name="detailArea">Area :</string>
-    <string name="detailDate">Date :</string>
+    <string name="detailDate">Date Lost :</string>
     <string name="detailBreed">Breed :</string>
     <string name="detailGender">Gender :</string>
     <string name="detailEmail">Contact Email :</string>

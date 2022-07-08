@@ -1,6 +1,8 @@
 package ie.tud.finddog.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.location.Location
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseUser
 import android.view.View
+import androidx.activity.viewModels
 import com.squareup.picasso.Picasso
 import ie.tud.finddog.R
 import ie.tud.finddog.databinding.HomeBinding
@@ -24,7 +27,10 @@ import ie.tud.finddog.databinding.NavHeaderBinding
 import ie.tud.finddog.firebase.FirebaseImageManager
 import ie.tud.finddog.ui.auth.LoggedInViewModel
 import ie.tud.finddog.ui.auth.Login
+import ie.tud.finddog.ui.map.MapsViewModel
+import ie.tud.finddog.utils.checkLocationPermissions
 import ie.tud.finddog.utils.customTransformation
+import ie.tud.finddog.utils.isPermissionGranted
 import timber.log.Timber
 
 
@@ -37,6 +43,8 @@ class Home : AppCompatActivity() {
     private lateinit var loggedInViewModel : LoggedInViewModel
     private lateinit var headerView : View
     private lateinit var intentLauncher : ActivityResultLauncher<Intent>
+    private val mapsViewModel : MapsViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +71,24 @@ class Home : AppCompatActivity() {
 
         initNavHeader()
 
+        if(checkLocationPermissions(this)) {
+            mapsViewModel.updateCurrentLocation()
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (isPermissionGranted(requestCode, grantResults))
+            mapsViewModel.updateCurrentLocation()
+        else {
+            // permissions denied, so use a default location
+            mapsViewModel.currentLocation.value = Location("Default").apply {
+                latitude = 52.245696
+                longitude = -7.139102
+            }
+        }
+        Timber.i("LOC : %s", mapsViewModel.currentLocation.value)
     }
 
     public override fun onStart() {

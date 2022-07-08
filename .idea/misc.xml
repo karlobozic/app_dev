@@ -3,28 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/drawable-v24/ic_menu_aboutus.xml" value="0.208" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/drawable-v24/ic_menu_location.xml" value="0.1955" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/drawable/ic_menu_dog.xml" value="0.1675" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/drawable/ic_menu_report.xml" value="0.1095" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/drawable/ic_swipe_delete.xml" value="0.195" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/drawable/ic_swipe_edit.xml" value="0.195" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/drawable/side_nav_bar.xml" value="0.1675" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/app_bar_home.xml" value="0.15833333333333333" />
-        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/card_dog.xml" value="0.15833333333333333" />
-        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/content_home.xml" value="0.1" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/card_dog.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/content_home.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/content_main.xml" value="0.21739130434782608" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_about.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_aboutus.xml" value="0.15833333333333333" />
-        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_dog.xml" value="0.15833333333333333" />
-        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_dog_detail.xml" value="0.1" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_dog.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_dog_detail.xml" value="0.22" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_maps.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/fragment_report.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/home.xml" value="0.1" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/loading.xml" value="0.20244565217391305" />
-        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/login.xml" value="0.20244565217391305" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/login.xml" value="0.22" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/nav_header.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/nav_header_main.xml" value="0.15833333333333333" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/layout/togglebutton_layout.xml" value="0.1" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/menu/menu_dog.xml" value="0.11875" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/menu/menu_map.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/karlo/FindDog/app/src/main/res/menu/menu_report.xml" value="0.15833333333333333" />
-        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/menu/nav_drawer_menu.xml" value="0.15729166666666666" />
+        <entry key="..\:/Users/karlo/FindDog/app/src/main/res/menu/nav_drawer_menu.xml" value="0.6666666666666666" />
       </map>
     </option>
   </component>

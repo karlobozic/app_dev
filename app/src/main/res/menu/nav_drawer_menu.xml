@@ -17,8 +17,8 @@
             android:icon="@drawable/ic_menu_location"
             android:title="@string/action_location" />
         <item
-            android:id="@+id/aboutusFragment"
-            android:icon="@drawable/ic_menu_report"
+            android:id="@+id/aboutFragment"
+            android:icon="@drawable/ic_menu_aboutus"
             android:title="@string/action_about"/>
     </group>
 

@@ -37,15 +37,6 @@ class DogDetailFragment : Fragment() {
         detailViewModel = ViewModelProvider(this).get(DogDetailViewModel::class.java)
         detailViewModel.observableDog.observe(viewLifecycleOwner, Observer { render() })
 
-        fragBinding.editDonationButton.setOnClickListener {
-            detailViewModel.updateDog(loggedInViewModel.liveFirebaseUser.value?.uid!!,
-                args.dogid, fragBinding.name?.observableDog!!.value!!)
-            //Force Reload of list to guarantee refresh
-            reportViewModel.load()
-            findNavController().navigateUp()
-            //findNavController().popBackStack()
-
-        }
 
         fragBinding.deleteDonationButton.setOnClickListener {
             reportViewModel.delete(loggedInViewModel.liveFirebaseUser.value?.uid!!,
@@ -56,15 +47,13 @@ class DogDetailFragment : Fragment() {
     }
 
     private fun render() {
-        fragBinding.editEmail.setText("A Message")
 
         fragBinding.name = detailViewModel
         fragBinding.area = detailViewModel
         fragBinding.date = detailViewModel
         fragBinding.breed = detailViewModel
-        fragBinding.gender = detailViewModel
 
-
+        fragBinding.email = detailViewModel
 
 //        fragBinding. = detailViewModel
         Timber.i("Retrofit fragBinding.name == $fragBinding.name")
