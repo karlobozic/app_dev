@@ -87,6 +87,29 @@ object FirebaseImageManager {
             })
     }
 
+    fun uploadDogImage(dogid: String, imageUri : Uri?) {
+        Picasso.get().load(imageUri)
+            .resize(200, 200)
+            .transform(customTransformation())
+            .memoryPolicy(MemoryPolicy.NO_CACHE)
+            .centerCrop()
+            .into(object : Target {
+                override fun onBitmapLoaded(bitmap: Bitmap?,
+                                            from: Picasso.LoadedFrom?
+                ) {
+                    Timber.i("DX onBitmapLoaded $bitmap")
+                    uploadImageToFirebase(dogid, bitmap!!,false)
+                }
+
+                override fun onBitmapFailed(e: java.lang.Exception?,
+                                            errorDrawable: Drawable?) {
+                    Timber.i("DX onBitmapFailed $e")
+                }
+
+                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
+            })
+    }
+
     fun updateDefaultImage(userid: String, resource: Int, imageView: ImageView) {
         Picasso.get().load(resource)
             .resize(200, 200)

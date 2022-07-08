@@ -1,8 +1,17 @@
 package ie.tud.finddog.ui.dog
 
+import android.app.Activity.RESULT_CANCELED
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -11,10 +20,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import ie.tud.finddog.R
 import ie.tud.finddog.databinding.FragmentDogBinding
+import ie.tud.finddog.databinding.FragmentReportBinding
+import ie.tud.finddog.firebase.FirebaseImageManager
 import ie.tud.finddog.main.DogApp
 import ie.tud.finddog.models.DogModel
 import ie.tud.finddog.ui.auth.LoggedInViewModel
+import ie.tud.finddog.ui.map.MapsViewModel
 import ie.tud.finddog.ui.report.ReportViewModel
+import ie.tud.finddog.utils.readImageUri
+import ie.tud.finddog.utils.showImagePicker
+import timber.log.Timber
 
 class DogFragment : Fragment() {
 
@@ -25,12 +40,13 @@ class DogFragment : Fragment() {
     private lateinit var dogViewModel: DogViewModel
     private val reportViewModel: ReportViewModel by activityViewModels()
     private val loggedInViewModel : LoggedInViewModel by activityViewModels()
+    private val mapsViewModel: MapsViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as DogApp
         setHasOptionsMenu(true)
-        //navController = Navigation.findNavController(activity!!, R.id.nav_host_fragment)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -63,28 +79,27 @@ class DogFragment : Fragment() {
     }
 
 
-//
-
     fun setButtonListener(layout: FragmentDogBinding) {
         layout.submitButton.setOnClickListener {
-            val name = layout.editTextName.text.toString()
-            val area = layout.editTextArea.text.toString()
-            val date = layout.editTextDate.text.toString()
-            val breed = layout.editTextBreed.text.toString()
-            val gender = layout.editTextGender.text.toString()
+        val name = layout.editTextName.text.toString()
+        val date = layout.editTextDate.text.toString()
+        val breed = layout.editTextBreed.text.toString()
+        val gender = layout.editTextGender.text.toString()
 
-
-            dogViewModel.addDog(loggedInViewModel.liveFirebaseUser,
-                DogModel(name = name,
-                    area = area,
+            dogViewModel.addDog(
+                loggedInViewModel.liveFirebaseUser,
+                DogModel(
+                    name = name,
                     date = date,
                     breed = breed,
                     gender = gender,
-                    email = loggedInViewModel.liveFirebaseUser.value?.email!!))
-
-//            Timber.i("Total Donated so far")
+                    email = loggedInViewModel.liveFirebaseUser.value?.email!!,
+                    latitude = mapsViewModel.currentLocation.value!!.latitude,
+                    longitude = mapsViewModel.currentLocation.value!!.longitude,
+                )
+            )
         }
-    }
+}
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_dog, menu)
@@ -96,9 +111,6 @@ class DogFragment : Fragment() {
             requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

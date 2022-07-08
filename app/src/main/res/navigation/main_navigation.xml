@@ -51,6 +51,8 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
+
+
     <fragment
         android:id="@+id/dogDetailFragment"
         android:name="ie.tud.finddog.ui.detail.DogDetailFragment"
@@ -65,6 +67,19 @@
             android:name="dogid"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="ie.tud.finddog.ui.message.MessageFragment"
+        android:label="Message"
+        tools:layout="@layout/fragment_message" >
+        <action
+            android:id="@+id/action_dogDetailFragment_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
     <fragment
         android:id="@+id/mapsFragment"
         android:name="ie.tud.finddog.ui.map.MapsFragment"

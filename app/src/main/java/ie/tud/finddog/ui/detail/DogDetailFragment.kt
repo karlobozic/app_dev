@@ -49,7 +49,6 @@ class DogDetailFragment : Fragment() {
     private fun render() {
 
         fragBinding.name = detailViewModel
-        fragBinding.area = detailViewModel
         fragBinding.date = detailViewModel
         fragBinding.breed = detailViewModel
 

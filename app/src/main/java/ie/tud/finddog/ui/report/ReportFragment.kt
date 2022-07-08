@@ -1,21 +1,20 @@
 package ie.tud.finddog.ui.report
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ie.tud.finddog.R
 import ie.tud.finddog.adapters.DogAdapter
 import ie.tud.finddog.adapters.DogClickListener
@@ -34,10 +33,13 @@ class ReportFragment : Fragment(), DogClickListener {
     lateinit var loader : AlertDialog
     private val reportViewModel: ReportViewModel by activityViewModels()
     private val loggedInViewModel : LoggedInViewModel by activityViewModels()
+    private lateinit var intentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
+
     }
 
     override fun onCreateView(
@@ -88,6 +90,8 @@ class ReportFragment : Fragment(), DogClickListener {
         val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
         itemTouchEditHelper.attachToRecyclerView(fragBinding.recyclerView)
 
+//        setButtonListener(fragBinding)
+
         return root
     }
 
@@ -106,6 +110,8 @@ class ReportFragment : Fragment(), DogClickListener {
 
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
